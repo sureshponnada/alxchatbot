@@ -75,12 +75,62 @@ class MainDialog extends ComponentDialog {
         // Call LUIS
         const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
         switch (LuisRecognizer.topIntent(luisResult)) {
-        case 'SetupBoxDrive':      
 
-         //   return await stepContext.beginDialog('boxCSDialog', qryDetails);
+        case 'setupboxdrive':            
          const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started/box-drive) to get started.";
          return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
-
+         
+         case 'setupfolder':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://alexion.service-now.com/ask?id=sc_cat_item&sys_id=2bc828c313df6200faed51a63244b0cc) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'searchfiles':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'getoverview':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+        
+         case 'gettraining':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://alexion.service-now.com/ask?id=kb_article&sys_id=53c26b2ddb46a3840dfde9ec0b961923) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'acceesfrommobile':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-mobile/setting-up-box-for-mobile-devices) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'viewofficedocument':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'viewofficedocumentonmobile':         
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-mobile/office-apps-for-ios) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'editofficedocument':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'senddoctodocusign':         
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/apps-integrations/box-docusign) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+   
+         case 'linkfile':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating/shared-links-deep-dive) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'revokeaccess':         
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Remove-Collaborator) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'customizeURL':          
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Customize-URL) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
+         
+         case 'bestpractices':         
+         const boxSetupMessageTxt ="You work on Box files right from your laptop. Check out this [link](https://alexion.app.box.com/s/gf23rxrvy406hku08y8nbufa8p03acmo) to get started.";
+         return await stepContext.context.sendActivity(boxSetupMessageTxt,boxSetupMessageTxt,InputHints.IgnoringInput);
    
         default:
             // Catch all for unhandled intents
