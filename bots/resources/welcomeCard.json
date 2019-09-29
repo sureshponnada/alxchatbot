@@ -11,7 +11,9 @@
         "items": [
           {
             "type": "Image",
-            "url": "http://localhost/images/askErica.png"
+            "size": "medium",
+            "horizontalAlignment": "left",
+            "url": "http://boxdev.alexion.com/Content/BoxPlaybook/images/mascot.png"
           }
         ]
       },
@@ -23,7 +25,9 @@
             "spacing": "medium",
             "size": "default",
             "weight": "bolder",
-            "text": "Hi, I am Erica.\n\n Welcome to Box website."
+            "horizontalAlignment": "left",
+            "spacing":"small",
+            "text": "Hi, I am Alexi.\n\nWelcome to Box website."
           }
         ]
 
@@ -34,7 +38,7 @@
       "type": "TextBlock",
       "size": "default",
       "isSubtle": "yes",
-      "text": "I’m programmed to help you with questions about this site. Are you looking for info on Box?",
+      "text": "What brings you to the site today?",
       "wrap": true,
       "maxLines": 0
     }

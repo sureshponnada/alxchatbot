@@ -18,8 +18,6 @@ const { BoxCSRecognizer } = require('./dialogs/boxCSRecognizer');
 const { DialogAndWelcomeBot } = require('./bots/dialogAndWelcomeBot');
 const { MainDialog } = require('./dialogs/mainDialog');
 
-const { BoxCSDialog } = require('./dialogs/boxCSDialog');
-const BOX_CS_DIALOG = 'boxCSDialog';
 
 // Note: Ensure you have a .env file and include LuisAppId, LuisAPIKey and LuisAPIHostName.
 const ENV_FILE = path.join(__dirname, '.env');
@@ -64,8 +62,8 @@ const luisConfig = { applicationId: LuisAppId, endpointKey: LuisAPIKey, endpoint
 
 luisRecognizer = new BoxCSRecognizer(luisConfig);
 
-const boxCustomerSupportDialog = new BoxCSDialog(BOX_CS_DIALOG);
-const dialog = new MainDialog(luisRecognizer, boxCustomerSupportDialog);
+
+const dialog = new MainDialog(luisRecognizer);
 const bot = new DialogAndWelcomeBot(conversationState, userState, dialog);
 
 // Create HTTP server

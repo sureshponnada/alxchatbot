@@ -22,18 +22,18 @@ class DialogBot extends ActivityHandler {
         this.dialogState = this.conversationState.createProperty('DialogState');
 
         this.onMessage(async (context, next) => {
-            console.log('Running dialog with Message Activity.');
+           // console.log('Running dialog with Message Activity.');
 
             // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
-
+            
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
         this.onDialog(async (context, next) => {
             // Save any state changes. The load happened during the execution of the Dialog.
-            console.log("Running dialog with Dialog Activity");
+           // console.log("Running dialog with Dialog Activity");
             await this.conversationState.saveChanges(context, false);
             await this.userState.saveChanges(context, false);
 
