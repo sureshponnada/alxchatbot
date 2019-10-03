@@ -83,32 +83,32 @@ class MainDialog extends ComponentDialog {
                 return await stepContext.next();
                 break;
             case 'setupfolder':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://alexion.service-now.com/ask?id=sc_cat_item&sys_id=2bc828c313df6200faed51a63244b0cc) to get started.";
+                boxSetupMessageTxt = "It is pretty easy to setup a Box folder. Submit a helpdesk ticket here [link](https://alexion.service-now.com/ask?id=sc_cat_item&sys_id=2bc828c313df6200faed51a63244b0cc) to get started.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
-            case 'searchfiles':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating) to get started.";
+            case 'searchfile':
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating) to know how to search in Box.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'getoverview':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started) to get started.";
+                boxSetupMessageTxt = "Check this video [link](https://box.alexion.com/guides/getting-started) that provides an insightful overview of the Box @Alexion.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'gettraining':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://alexion.service-now.com/ask?id=kb_article&sys_id=53c26b2ddb46a3840dfde9ec0b961923) to get started.";
+                boxSetupMessageTxt = "Check out upcoming trainings at [link](https://alexion.service-now.com/ask?id=kb_article&sys_id=53c26b2ddb46a3840dfde9ec0b961923) and add a training class to your calendar.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'acceesfrommobile':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-mobile/setting-up-box-for-mobile-devices) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/box-mobile/setting-up-box-for-mobile-devices) to access Box files from your mobile phone.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'viewofficedocument':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to learn the steps to view office documents.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
@@ -118,32 +118,32 @@ class MainDialog extends ComponentDialog {
                 return await stepContext.next();
                 break;
             case 'editofficedocument':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/box-and-office-online/opening-editing-files) to learn the steps to edit office documents.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'senddoctodocusign':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/apps-integrations/box-docusign) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/apps-integrations/box-docusign) to learn the steps to docusign a document in Box.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'linkfile':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating/shared-links-deep-dive) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/guides/getting-started/sharing-collaborating/shared-links-deep-dive) to learn the steps to share a document in Box.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'revokeaccess':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Remove-Collaborator) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Remove-Collaborator) to learn the steps to revoke access of existing collaborator.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'customizeURL':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Customize-URL) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://box.alexion.com/help/Did-You-Know/DYK-Customize-URL) to learn the steps to customize a Link to Box document.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;
             case 'bestpractices':
-                boxSetupMessageTxt = "You work on Box files right from your laptop. Check out this [link](https://alexion.app.box.com/s/gf23rxrvy406hku08y8nbufa8p03acmo) to get started.";
+                boxSetupMessageTxt = "Check out this [link](https://alexion.app.box.com/s/gf23rxrvy406hku08y8nbufa8p03acmo) to learn Best Practices for Box usage.";
                 return await stepContext.context.sendActivity(boxSetupMessageTxt, boxSetupMessageTxt, InputHints.IgnoringInput);
                 return await stepContext.next();
                 break;

@@ -4,35 +4,11 @@
   "version": "1.0",
   "body": [
     {
-      "type":"ColumnSet",
-      "columns": [
-        {
-        "type": "Column",
-        "items": [
-          {
-            "type": "Image",
-            "size": "medium",
-            "horizontalAlignment": "left",
-            "url": "http://boxdev.alexion.com/Content/BoxPlaybook/images/mascot.png"
-          }
-        ]
-      },
-      {
-        "type": "Column",
-        "items": [
-          {
-            "type": "TextBlock",
-            "spacing": "medium",
+      "type": "TextBlock",           
             "size": "default",
             "weight": "bolder",
-            "horizontalAlignment": "left",
-            "spacing":"small",
-            "text": "Hi, I am Alexi.\n\nWelcome to Box website."
-          }
-        ]
-
-      }
-      ]
+            "horizontalAlignment": "left",          
+            "text": "Hi, I am Alexi.\n\nWelcome to Box website."      
       },
      {
       "type": "TextBlock",

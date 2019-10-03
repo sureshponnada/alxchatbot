@@ -2,6 +2,9 @@
 // Licensed under the MIT License.
 
 const { ActivityHandler } = require('botbuilder');
+    // The accessor names for the conversation data and user profile state property accessors.
+    const CONVERSATION_DATA_PROPERTY = 'conversationData';
+    const USER_PROFILE_PROPERTY = 'userProfile';
 
 class DialogBot extends ActivityHandler {
     /**
@@ -16,10 +19,18 @@ class DialogBot extends ActivityHandler {
         if (!userState) throw new Error('[DialogBot]: Missing parameter. userState is required');
         if (!dialog) throw new Error('[DialogBot]: Missing parameter. dialog is required');
 
+        // Create the state property accessors for the conversation data and user profile.
+        this.conversationData = conversationState.createProperty(CONVERSATION_DATA_PROPERTY);
+        this.userProfile = userState.createProperty(USER_PROFILE_PROPERTY);
+
         this.conversationState = conversationState;
         this.userState = userState;
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
+
+   
+
+    
 
         this.onMessage(async (context, next) => {
            // console.log('Running dialog with Message Activity.');
@@ -37,7 +48,7 @@ class DialogBot extends ActivityHandler {
             await this.conversationState.saveChanges(context, false);
             await this.userState.saveChanges(context, false);
 
-            // By calling next() you ensure that the next BotHandler is run.
+           // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
     }
