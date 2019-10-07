@@ -7,15 +7,23 @@ const { LuisRecognizer } = require('botbuilder-ai');
 const { ComponentDialog, DialogSet, DialogTurnStatus, TextPrompt, WaterfallDialog } = require('botbuilder-dialogs');
 
 const MAIN_WATERFALL_DIALOG = 'mainWaterfallDialog';
+const UN_SUCCESSFUL_CNT = 'unSuccessfulCntProperty';
+
+
 
 
 class MainDialog extends ComponentDialog {
-    constructor(luisRecognizer, boxCSDialog) {
-        super('MainDialog');
+    constructor(luisRecognizer, userState) {
+        super('MainDialog', userState);
+
 
         if (!luisRecognizer) throw new Error('[MainDialog]: Missing parameter \'luisRecognizer\' is required');
         this.luisRecognizer = luisRecognizer;
 
+        if (!userState) throw new Error('userState is undefined in MainDialog');
+        this.userState = userState;
+
+        this.unSuccessfulCntProperty = this.userState.createProperty(UN_SUCCESSFUL_CNT);
 
         // Define the main dialog and its related components.
 
@@ -28,6 +36,7 @@ class MainDialog extends ComponentDialog {
 
         this.initialDialogId = MAIN_WATERFALL_DIALOG;
     }
+
 
     /**
      * The run method handles the incoming activity (in the form of a TurnContext) and passes it through the dialog system.
@@ -55,9 +64,12 @@ class MainDialog extends ComponentDialog {
             await stepContext.context.sendActivity(messageText, null, InputHints.IgnoringInput);
             return await stepContext.next();
         }
-
+        await this.unSuccessfulCntProperty.set(stepContext.context, 0);
         const messageText = stepContext.options.restartMsg ? stepContext.options.restartMsg : 'How can I help you? Select an option above or type your question:';
         const promptMessage = MessageFactory.text(messageText, messageText, InputHints.ExpectingInput);
+
+
+
         return await stepContext.prompt('TextPrompt', { prompt: promptMessage });
     }
 
@@ -148,13 +160,26 @@ class MainDialog extends ComponentDialog {
                 return await stepContext.next();
                 break;
             case 'None':
-                // Catch all for unhandled intents
-                console.log(`Inside None Intent`);
+                var cnt = await this.unSuccessfulCntProperty.get(stepContext.context);
+                var iCnt = parseInt(cnt);
 
-                const didntUnderstandMessageText = `Sorry I still don’t understand your question. Click this [link](https://alexion.service-now.com/ask) to open a ticket with IT Helpdesk and someone will get in touch with you. Thank you.`;
-                await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-                return await stepContext.next();
-                break;
+                if (!isNaN(iCnt) && iCnt >= 3) {
+                    const didntUnderstandMessageText = `Sorry I still don’t understand your question. Click this [link](https://alexion.service-now.com/ask) to open a ticket with IT Helpdesk and someone will get in touch with you. Thank you.`;
+                    await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
+                    await this.unSuccessfulCntProperty.set(stepContext.context, 0);
+                    await this.userState.saveChanges(stepContext.context, false);                  
+                    return await stepContext.next();
+                    break;
+                } else {
+                    iCnt = iCnt + 1;
+                    await this.unSuccessfulCntProperty.set(stepContext.context, iCnt);
+                    const didntUnderstandMessageText = `Sorry I don’t understand your question. Please type what you are looking for.`;
+                    const promptMessage = MessageFactory.text(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.ExpectingInput);
+                    await this.userState.saveChanges(stepContext.context, false);
+                    return await stepContext.prompt('TextPrompt', { prompt: promptMessage });
+                    break;
+
+                }
         }
 
         return await stepContext.next();
@@ -167,32 +192,14 @@ class MainDialog extends ComponentDialog {
     async finalStep(stepContext) {
 
         if (stepContext.result) {
-            /*
-            const result = stepContext.result;
-    
-            const msg = `Still need to work on this. Like for sending confirmation message after completing any activity.`;
-            await stepContext.context.sendActivity(msg, msg, InputHints.IgnoringInput);
-            */
-          //  console.log(`Inside stepcontext Result`);
+
             return await stepContext.replaceDialog(this.initialDialogId, { restartMsg: 'What else can I do for you?' });
         }
-        /*
         else {
-            console.log(`Inside else && MaxAttempts=${MaxAttempts}`);
-            
-            if(cnt == MaxAttempts) {
-                cnt =0;
-                const didntUnderstandMessageText = `Sorry I still don’t understand your question. Click this [link](https://alexion.service-now.com/ask) to open a ticket with IT Helpdesk and someone will get in touch with you. Thank you.`;
-                return await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
-            
-            }
-            
-        }  */
+            return await stepContext.replaceDialog(this.initialDialogId, { restartMsg: 'What else can I do for you?' });
+        }
 
-        // Restart the main dialog with a different message the second time around
-        return await stepContext.replaceDialog(this.initialDialogId, { restartMsg: 'What else can I do for you?' });
     }
-
 
 }
 

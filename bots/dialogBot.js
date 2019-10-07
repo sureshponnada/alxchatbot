@@ -2,9 +2,9 @@
 // Licensed under the MIT License.
 
 const { ActivityHandler } = require('botbuilder');
-    // The accessor names for the conversation data and user profile state property accessors.
-    const CONVERSATION_DATA_PROPERTY = 'conversationData';
-    const USER_PROFILE_PROPERTY = 'userProfile';
+// The accessor names for the conversation data and user profile state property accessors.
+const CONVERSATION_DATA_PROPERTY = 'conversationData';
+const USER_PROFILE_PROPERTY = 'userProfile';
 
 class DialogBot extends ActivityHandler {
     /**
@@ -28,27 +28,27 @@ class DialogBot extends ActivityHandler {
         this.dialog = dialog;
         this.dialogState = this.conversationState.createProperty('DialogState');
 
-   
 
-    
+
+
 
         this.onMessage(async (context, next) => {
-           // console.log('Running dialog with Message Activity.');
+            // console.log('Running dialog with Message Activity.');
 
             // Run the Dialog with the new message Activity.
             await this.dialog.run(context, this.dialogState);
-            
+
             // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
 
         this.onDialog(async (context, next) => {
             // Save any state changes. The load happened during the execution of the Dialog.
-           // console.log("Running dialog with Dialog Activity");
+            // console.log("Running dialog with Dialog Activity");
             await this.conversationState.saveChanges(context, false);
             await this.userState.saveChanges(context, false);
 
-           // By calling next() you ensure that the next BotHandler is run.
+            // By calling next() you ensure that the next BotHandler is run.
             await next();
         });
     }

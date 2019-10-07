@@ -24,14 +24,14 @@ class BoxCSRecognizer {
     }
 
     getFromEntities(result) {
-        console.log("Inside getFromEntities"+ result.entities);
-        
+        console.log("Inside getFromEntities" + result.entities);
+
 
         return { from: fromValue, airport: fromAirportValue };
     }
 
-    
-    
+
+
 }
 
 module.exports.BoxCSRecognizer = BoxCSRecognizer;
