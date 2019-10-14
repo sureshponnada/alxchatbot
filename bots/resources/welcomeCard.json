@@ -7,14 +7,26 @@
       "type": "TextBlock",           
             "size": "default",
             "weight": "bolder",
-            "horizontalAlignment": "left",          
-            "text": "Hi, I am Alexi.\n\nWelcome to Box website."      
+            "horizontalAlignment": "left",  
+            "spacing":"none",
+            "wrap": true,        
+            "text": "Hi, I am Alexi."      
+      },
+    {
+      "type": "TextBlock",           
+            "size": "default",
+            "weight": "bolder",
+            "horizontalAlignment": "left",  
+            "spacing":"none",
+            "wrap": true,        
+            "text": "Welcome to Box website."      
       },
      {
       "type": "TextBlock",
       "size": "default",
       "isSubtle": "yes",
       "text": "What brings you to the site today?",
+      "spacing":"small",
       "wrap": true,
       "maxLines": 0
     }

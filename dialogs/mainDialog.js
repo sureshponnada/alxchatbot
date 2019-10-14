@@ -163,7 +163,7 @@ class MainDialog extends ComponentDialog {
                 var cnt = await this.unSuccessfulCntProperty.get(stepContext.context);
                 var iCnt = parseInt(cnt);
 
-                if (!isNaN(iCnt) && iCnt >= 3) {
+                if (!isNaN(iCnt) && iCnt >= 2) {
                     const didntUnderstandMessageText = `Sorry I still don’t understand your question. Click this [link](https://alexion.service-now.com/ask) to open a ticket with IT Helpdesk and someone will get in touch with you. Thank you.`;
                     await stepContext.context.sendActivity(didntUnderstandMessageText, didntUnderstandMessageText, InputHints.IgnoringInput);
                     await this.unSuccessfulCntProperty.set(stepContext.context, 0);
