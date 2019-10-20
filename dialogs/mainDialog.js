@@ -87,6 +87,10 @@ class MainDialog extends ComponentDialog {
         var boxSetupMessageTxt = "";
         const luisResult = await this.luisRecognizer.executeLuisQuery(stepContext.context);
         console.log(`top Intent= ${LuisRecognizer.topIntent(luisResult)}`);
+        if(LuisRecognizer.topIntent(luisResult) != 'None') {
+            await this.unSuccessfulCntProperty.set(stepContext.context, 0);
+            await this.userState.saveChanges(stepContext.context, false);
+        }
         switch (LuisRecognizer.topIntent(luisResult)) {
 
             case 'setupboxdrive':
